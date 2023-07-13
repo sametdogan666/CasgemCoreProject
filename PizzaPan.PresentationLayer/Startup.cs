@@ -40,6 +40,9 @@ namespace PizzaPan.PresentationLayer
 
             services.AddScoped<ITestimonialService, TestimonialManager>();
             services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+
+            services.AddScoped<ICompanyInfoService, CompanyInfoManager>();
+            services.AddScoped<ICompanyInfoDal, EfCompanyInfoDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

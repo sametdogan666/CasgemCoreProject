@@ -1,0 +1,45 @@
+﻿@model List<PizzaPan.EntityLayer.Concrete.CompanyInfo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Firma Bilgileri</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Telefon Numarası</th>
+        <th>Mail Adresi</th>
+        <th>Adres</th>
+        <th>Harita Bilgisi</th>
+        <th>Çalışma Günleri</th>
+        <th>Çalışma Saatleri</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Title</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Mail</td>
+            <td>@item.Address</td>
+            <td>@item.Location.Substring(0,20)</td>
+            <td>@item.OpeningDay</td>
+            <td>@item.OpeningTime</td>
+            <td><a href="/AdminCompanyInfo/UpdateCompanyInfo/@item.Id" class="btn btn-outline-warning">Güncelle</a></td>
+            <td><a href="/AdminCompanyInfo/DeleteCompanyInfo/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+        </tr>
+    }
+</table>
+@if (ViewBag.countCompany == 0)
+{
+    <a href="/AdminCompanyInfo/AddCompanyInfo" class="btn btn-outline-primary">Yeni Firma Bilgisi Ekle</a>
+}
+
+
+

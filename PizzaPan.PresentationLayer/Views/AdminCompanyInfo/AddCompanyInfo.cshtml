@@ -1,0 +1,37 @@
+﻿@model PizzaPan.EntityLayer.Concrete.CompanyInfo
+
+@{
+    ViewData["Title"] = "AddCompanyInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Firma Bilgisi Ekleme Sayfası</h2>
+
+<form method="post">
+    <label>İletişim Başlığı</label>
+    <input asp-for="Title" class="form-control" />
+    <br />
+    <label>Telefon Numarası</label>
+    <input asp-for="PhoneNumber" class="form-control" />
+    <br />
+    <label>Mail Adresi</label>
+    <input asp-for="Mail" class="form-control" />
+    <br />
+    <label>Firma Adresi</label>
+    <input asp-for="Address" class="form-control" />
+    <br />
+    <label>Harita Bilgisi</label>
+    <input asp-for="Location" class="form-control" />
+    <br />
+    <label>Çalışma Günleri</label>
+    <input asp-for="OpeningDay" class="form-control" />
+    <br />
+    <label>Çalışma Saatleri</label>
+    <input asp-for="OpeningTime" class="form-control" />
+    <br />
+    <button class="btn btn-info">Firma Bilgilerini Kaydet</button>
+    <a href="/AdminCompanyInfo/Index/" class="btn btn-secondary">Değişikliklerden Vazgeç</a>
+</form>
+
+
+

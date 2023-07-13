@@ -1,0 +1,32 @@
+﻿@model PizzaPan.EntityLayer.Concrete.CompanyInfo
+
+@{
+    ViewData["Title"] = "UpdateCompanyInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Referans Güncelleme Sayfası</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <input type="text" class="form-control" asp-for="Title" />
+    <br />
+    <input type="text" class="form-control" asp-for="PhoneNumber" />
+    <br />
+    <input type="text" class="form-control" asp-for="Mail" />
+    <br />
+    <input type="text" class="form-control" asp-for="Address" />
+    <br />
+    <input type="text" class="form-control" asp-for="Location" />
+    <br />
+    <input type="text" class="form-control" asp-for="OpeningDay" />
+    <br />
+    <input type="text" class="form-control" asp-for="OpeningTime" />
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+    <a href="/AdminCompanyInfo/Index/" class="btn btn-warning">Değişikliklerden Vazgeç</a>
+</form>
+
+
+
