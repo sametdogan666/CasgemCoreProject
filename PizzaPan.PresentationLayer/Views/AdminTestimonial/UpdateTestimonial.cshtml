@@ -1,0 +1,24 @@
+﻿@model PizzaPan.EntityLayer.Concrete.Testimonial
+
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Referans Güncelleme Sayfası</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="TestimonialId" />
+
+    <input type="text" class="form-control" asp-for="CustomerName" />
+    <br />
+    <input type="text" class="form-control" asp-for="CustomerTitle" />
+    <br />
+    <input type="text" class="form-control" asp-for="Comment" />
+    <br />
+    <input type="text" class="form-control" asp-for="ImageUrl" />
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+    <a href="/AdminTestimonial/Index/" class="btn btn-warning">Değişikliklerden Vazgeç</a>
+</form>
+

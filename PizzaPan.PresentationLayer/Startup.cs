@@ -8,6 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PizzaPan.BusinessLayer.Abstract;
+using PizzaPan.BusinessLayer.Concrete;
+using PizzaPan.DataAccessLayer.Abstract;
+using PizzaPan.DataAccessLayer.Concrete;
+using PizzaPan.DataAccessLayer.EntityFramework;
 
 namespace PizzaPan.PresentationLayer
 {
@@ -24,6 +29,17 @@ namespace PizzaPan.PresentationLayer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<Context>();
+
+            services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<ICategoryDal, EfCategoryDal>();
+
+            services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<IProductDal, EfProductDal>();
+
+            services.AddScoped<ITestimonialService, TestimonialManager>();
+            services.AddScoped<ITestimonialDal, EfTestimonialDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
