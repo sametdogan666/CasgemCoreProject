@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PizzaPan.EntityLayer.Concrete;
 using PizzaPan.PresentationLayer.Models;
+using System.Threading.Tasks;
 
 namespace PizzaPan.PresentationLayer.Controllers
 {
@@ -20,8 +21,8 @@ namespace PizzaPan.PresentationLayer.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Index(RegisterViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> Index(RegisterViewModel model)
         {
             AppUser appUser = new AppUser()
             {
@@ -31,9 +32,16 @@ namespace PizzaPan.PresentationLayer.Controllers
                 UserName = model.UserName
             };
 
-            _userManager.CreateAsync(appUser);
-            
-            return View();
+            if (ModelState.IsValid)
+            {
+                await _userManager.CreateAsync(appUser, model.Password);
+
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

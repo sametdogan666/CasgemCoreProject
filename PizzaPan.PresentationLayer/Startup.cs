@@ -13,6 +13,7 @@ using PizzaPan.BusinessLayer.Concrete;
 using PizzaPan.DataAccessLayer.Abstract;
 using PizzaPan.DataAccessLayer.Concrete;
 using PizzaPan.DataAccessLayer.EntityFramework;
+using PizzaPan.EntityLayer.Concrete;
 
 namespace PizzaPan.PresentationLayer
 {
@@ -49,6 +50,9 @@ namespace PizzaPan.PresentationLayer
 
             services.AddScoped<IDiscountService, DiscountManager>();
             services.AddScoped<IDiscountDal, EfDiscountDal>();
+
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
