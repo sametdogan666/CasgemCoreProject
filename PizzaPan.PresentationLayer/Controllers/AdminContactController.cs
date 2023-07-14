@@ -18,5 +18,22 @@ namespace PizzaPan.PresentationLayer.Controllers
 
             return View(values);
         }
+
+
+        [HttpGet]
+        public IActionResult DeleteMessage(int id)
+        {
+            var value = _contactService.TGetById(id);
+            _contactService.TDelete(value);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult GetMessageByThx()
+        {
+            var values = _contactService.TGetContactSubjectWithThx();
+
+            return View(values);
+        }
     }
 }

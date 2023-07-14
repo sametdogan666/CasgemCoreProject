@@ -1,8 +1,9 @@
-﻿@model List<PizzaPan.EntityLayer.Concrete.Testimonial>
+﻿@model List<Testimonial>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
 <h1>Referanslar Listesi</h1>
@@ -19,12 +20,13 @@
     </tr>
     @foreach (var item in Model)
     {
+        count++;
         <tr>
-            <td>@item.TestimonialId</td>
+            <td>@count</td>
             <td>@item.CustomerName</td>
             <td>@item.CustomerTitle</td>
-            <td>@item.Comment</td>
-            <td>@item.ImageUrl</td>
+            <td>@item.Comment.Substring(0,20)</td>
+            <td>@item.ImageUrl.Substring(0,20)</td>
             <td><a href="/AdminTestimonial/UpdateTestimonial/@item.TestimonialId" class="btn btn-outline-warning">Güncelle</a></td>
             <td><a href="/AdminTestimonial/DeleteTestimonial/@item.TestimonialId" class="btn btn-outline-danger">Sil</a></td>
         </tr>

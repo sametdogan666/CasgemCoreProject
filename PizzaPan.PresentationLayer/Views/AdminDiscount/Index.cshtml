@@ -1,0 +1,53 @@
+﻿@model List<Discount>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Kupon Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kupon Adı</th>
+        <th>Kupon Kullanım Sayısı</th>
+        <th>Oluşturulma Tarihi</th>
+        <th>Sonlanma Tarihi</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        if (item.EndDate < DateTime.Now)
+        {
+            <tr style="background-color: Pink;">
+                <td>@count</td>
+                <td>@item.DiscountCode</td>
+                <td>@item.DiscountCount</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.EndDate</td>
+                <td><a href="/AdminDiscount/UpdateCode/@item.Id" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/AdminDiscount/DeleteCode/@item.Id" class="btn btn-danger">Sil</a></td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>@count</td>
+                <td>@item.DiscountCode</td>
+                <td>@item.DiscountCount</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.EndDate</td>
+                <td><a href="/AdminDiscount/UpdateCode/@item.Id" class="btn btn-outline-warning">Güncelle</a></td>
+                <td><a href="/AdminDiscount/DeleteCode/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+            </tr>
+        }
+        
+       
+    }
+</table>
+<a href="/AdminDiscount/CreateCode/" class="btn btn-outline-primary">Yeni Kupon Ekle</a>
+

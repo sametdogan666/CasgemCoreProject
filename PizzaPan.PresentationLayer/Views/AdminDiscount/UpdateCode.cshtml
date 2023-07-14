@@ -1,0 +1,28 @@
+﻿@model Discount
+
+@{
+    ViewData["Title"] = "UpdateCode";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kupon Kodu Güncelleme Sayfası</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    
+    <label>Kupon Kodu</label>
+    <input type="text" class="form-control" asp-for="DiscountCode" disabled="" value="@ViewBag.code" />
+    <br />
+    <label>Kupon Adedi</label>
+    <input type="number" class="form-control" asp-for="DiscountCount"  />
+    <br />
+    <label>Oluşturma Tarihi</label>
+    <input type="date" class="form-control" asp-for="CreatedDate"/>
+    <br />
+    <label>Bitiş Tarihi</label>
+    <input type="date" class="form-control" asp-for="EndDate" />
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+    <a href="/AdminDiscount/Index/" class="btn btn-secondary">Değişikliklerden Vazgeç</a>
+</form>
+

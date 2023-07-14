@@ -1,8 +1,9 @@
-﻿@model List<PizzaPan.EntityLayer.Concrete.CompanyInfo>
+﻿@model List<CompanyInfo>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
 <h1>Firma Bilgileri</h1>
@@ -22,8 +23,9 @@
     </tr>
     @foreach (var item in Model)
     {
+        count++;
         <tr>
-            <td>@item.Id</td>
+            <td>@count</td>
             <td>@item.Title</td>
             <td>@item.PhoneNumber</td>
             <td>@item.Mail</td>

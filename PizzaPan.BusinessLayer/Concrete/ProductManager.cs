@@ -38,5 +38,10 @@ namespace PizzaPan.BusinessLayer.Concrete
         {
             return _productDal.GetById(id);
         }
+
+        public List<Product> TGetProductsWithCategoryList()
+        {
+            return _productDal.GetProductsWithCategory();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace PizzaPan.EntityLayer.Concrete
+﻿#nullable enable
+namespace PizzaPan.EntityLayer.Concrete
 {
     public class Product
     {

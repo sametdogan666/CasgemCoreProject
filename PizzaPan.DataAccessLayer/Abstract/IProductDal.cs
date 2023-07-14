@@ -1,9 +1,10 @@
-﻿using PizzaPan.EntityLayer.Concrete;
+﻿using System.Collections.Generic;
+using PizzaPan.EntityLayer.Concrete;
 
 namespace PizzaPan.DataAccessLayer.Abstract
 {
     public interface IProductDal : IGenericDal<Product>
     {
-
+        public List<Product> GetProductsWithCategory();
     }
 }

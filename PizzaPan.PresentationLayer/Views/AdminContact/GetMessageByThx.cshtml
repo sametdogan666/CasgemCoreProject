@@ -1,12 +1,11 @@
 ﻿@model List<Contact>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "GetMessageByThx";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    int count = 0;
 }
 
-<h2>Gelen Kutusu</h2>
+<h2>Teşekkür Mesajları</h2>
 
 <table class="table table-bordered">
     <tr>
@@ -18,9 +17,8 @@
     </tr>
     @foreach (var item in Model)
     {
-        count++;
         <tr>
-            <td>@count</td>
+            <td>@item.ContactId</td>
             <td>@item.ContactName</td>
             <td>@item.ContactSubject</td>
             <td><a href="/AdminContact/DeleteMessage/@item.ContactId" class="btn btn-outline-danger">Sil</a></td>
@@ -53,4 +51,4 @@
 
     }
 </table>
-<a href="/AdminContact/GetMessageByThx/" class="btn btn-info">Teşekkür Mesajları</a>
+<a href="/AdminContact/Index/" class="btn btn-info">Geri Dön</a>

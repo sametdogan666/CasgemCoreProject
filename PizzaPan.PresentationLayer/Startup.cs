@@ -43,6 +43,12 @@ namespace PizzaPan.PresentationLayer
 
             services.AddScoped<ICompanyInfoService, CompanyInfoManager>();
             services.AddScoped<ICompanyInfoDal, EfCompanyInfoDal>();
+
+            services.AddScoped<IContactService, ContactManager>();
+            services.AddScoped<IContactDal, EfContactDal>();
+
+            services.AddScoped<IDiscountService, DiscountManager>();
+            services.AddScoped<IDiscountDal, EfDiscountDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
