@@ -1,14 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
 using PizzaPan.EntityLayer.Concrete;
+using System.Reflection.Emit;
 
 namespace PizzaPan.DataAccessLayer.Concrete
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-LVPTDQG\SQLEXPRESS; initial catalog= CasgemDbPizzaPan; integrated security = true");
         }
+
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Contact> Contacts { get; set; }

@@ -21,7 +21,7 @@
     <input asp-for="ProductPrice" class="form-control" />
     <br />
     <label>Ürün Kategorisi</label>
-    <input asp-for="CategoryId" class="form-control" />
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryName,  new { @class = "form-control" })
     <br />
     <button class="btn btn-info">Ürünü Kaydet</button>
     <a href="/AdminProduct/Index/" class="btn btn-secondary">Değişikliklerden Vazgeç</a>

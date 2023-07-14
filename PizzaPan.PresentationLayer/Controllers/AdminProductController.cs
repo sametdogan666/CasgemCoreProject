@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PizzaPan.BusinessLayer.Abstract;
+using PizzaPan.DataAccessLayer.Concrete;
 using PizzaPan.EntityLayer.Concrete;
 
 namespace PizzaPan.PresentationLayer.Controllers
@@ -7,16 +10,16 @@ namespace PizzaPan.PresentationLayer.Controllers
     public class AdminProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly Context _context;
 
-        public AdminProductController(IProductService productService)
+        public AdminProductController(IProductService productService, Context context)
         {
             _productService = productService;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            //var values = _productService.TGetList();
-
             var values = _productService.TGetProductsWithCategoryList();
 
             return View(values);
@@ -25,6 +28,15 @@ namespace PizzaPan.PresentationLayer.Controllers
         [HttpGet]
         public IActionResult AddProduct()
         {
+            var values = (from category in _context.Categories.ToList()
+                select new SelectListItem
+                {
+                    Value = category.CategoryId.ToString(),
+                    Text = category.CategoryName
+                }).ToList();
+
+            ViewBag.categoryName = values;
+
             return View();
         }
 
@@ -50,6 +62,15 @@ namespace PizzaPan.PresentationLayer.Controllers
         public IActionResult UpdateProduct(int id)
         {
             var value = _productService.TGetById(id);
+
+            var values = (from category in _context.Categories.ToList()
+                select new SelectListItem
+                {
+                    Value = category.CategoryId.ToString(),
+                    Text = category.CategoryName
+                }).ToList();
+
+            ViewBag.categoryName = values;
 
             return View(value);
         }

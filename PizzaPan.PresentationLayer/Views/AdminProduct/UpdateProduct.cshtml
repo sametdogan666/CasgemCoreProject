@@ -18,7 +18,8 @@
     <br />
     <input type="text" class="form-control" asp-for="ProductPrice" />
     <br />
-    <input type="number" class="form-control" asp-for="CategoryId" />
+    <label>Ürün Kategorisi</label>
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryName,  new { @class = "form-control" })
     <br />
     <button class="btn btn-primary">Güncelle</button>
     <a href="/AdminProduct/Index/" class="btn btn-warning">Değişikliklerden Vazgeç</a>
