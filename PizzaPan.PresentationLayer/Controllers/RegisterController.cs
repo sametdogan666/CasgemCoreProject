@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PizzaPan.EntityLayer.Concrete;
 using PizzaPan.PresentationLayer.Models;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authorization;
+using MimeKit;
 
 namespace PizzaPan.PresentationLayer.Controllers
 {
@@ -26,38 +29,81 @@ namespace PizzaPan.PresentationLayer.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(RegisterViewModel model)
         {
+            Random rnd = new Random();
+            int x = rnd.Next(100000, 1000000);
+
             AppUser appUser = new AppUser()
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                UserName = model.UserName
+                UserName = model.UserName,
+                ConfirmCode = x
             };
 
-            if (model.Password == model.ConfirmPassword)
+            var result = await _userManager.CreateAsync(appUser, model.Password);
+
+
+            if (result.Succeeded)
             {
-                var result = await _userManager.CreateAsync(appUser, model.Password);
 
+                MimeMessage mimeMessage = new MimeMessage();
+                MailboxAddress mailboxAddressFrom = new MailboxAddress("CasgemPizzaPan", "s.doqann1570@gmail.com");
+                mimeMessage.From.Add(mailboxAddressFrom);
 
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Login");
-                }
-                else
-                {
-                    foreach (var item in result.Errors)
-                    {
-                        ModelState.AddModelError("", item.Description);
-                    }
-                }
+                MailboxAddress mailboxAddressTo = new MailboxAddress("User", model.Email);
+                mimeMessage.To.Add(mailboxAddressTo);
+
+                var bodyBuilder = new BodyBuilder();
+                bodyBuilder.TextBody = "Giriş yapabilmek için onaylama kodunuz: " + x;
+                mimeMessage.Body = bodyBuilder.ToMessageBody();
+
+                mimeMessage.Subject = "Doğrulama Kodu";
+
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Connect("smtp.gmail.com", 587, false);
+                smtpClient.Authenticate("s.doqann1570@gmail.com", "");
+                smtpClient.Send(mimeMessage);
+                smtpClient.Disconnect(true);
+
+                TempData["Mail"] = model.Email;
+
+                return RedirectToAction("ConfirmMail", "Register");
             }
             else
             {
-                ModelState.AddModelError("","Şifreler eşleşmiyor");
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
             }
 
             return View();
 
+        }
+
+
+        [HttpGet]
+        public IActionResult ConfirmMail()
+        {
+            var value = TempData["Mail"];
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmMail(ConfirmMailViewModel model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Mail);
+
+            if (user.ConfirmCode == model.ConfirmCode)
+            {
+                user.EmailConfirmed = true;
+                await _userManager.UpdateAsync(user);
+
+                return RedirectToAction("Index", "Login");
+            }
+            return View();
         }
     }
 }
