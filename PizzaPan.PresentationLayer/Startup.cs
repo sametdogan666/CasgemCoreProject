@@ -8,12 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using PizzaPan.BusinessLayer.Abstract;
 using PizzaPan.BusinessLayer.Concrete;
 using PizzaPan.DataAccessLayer.Abstract;
 using PizzaPan.DataAccessLayer.Concrete;
 using PizzaPan.DataAccessLayer.EntityFramework;
 using PizzaPan.EntityLayer.Concrete;
+using PizzaPan.PresentationLayer.Models;
 
 namespace PizzaPan.PresentationLayer
 {
@@ -51,8 +55,41 @@ namespace PizzaPan.PresentationLayer
             services.AddScoped<IDiscountService, DiscountManager>();
             services.AddScoped<IDiscountDal, EfDiscountDal>();
 
-            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
-            
+
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
+
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+
+            });
+            services.AddMvc();
+
+
+            services.AddAuthentication(
+                CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+            {
+                x.Cookie.Name = "ArtMvc.Auth";
+                x.LoginPath = "/Login/Index/";
+                x.LogoutPath = "/Login/LogOut/";
+                x.AccessDeniedPath = "/Login/Index/";
+                //x.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+                //x.Cookie.HttpOnly = false;
+                //x.SlidingExpiration = true;
+            });
+
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                opt.LoginPath = "/Login/Index/";
+                opt.LogoutPath = "/Login/LogOut/";
+                //opt.AccessDeniedPath = "/Login/Index/";
+                opt.Cookie.HttpOnly = false;
+                opt.SlidingExpiration = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +110,7 @@ namespace PizzaPan.PresentationLayer
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

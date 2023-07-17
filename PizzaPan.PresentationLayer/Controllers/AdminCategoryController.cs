@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PizzaPan.BusinessLayer.Abstract;
 using PizzaPan.EntityLayer.Concrete;
 
 namespace PizzaPan.PresentationLayer.Controllers
 {
+    [Authorize]
     public class AdminCategoryController : Controller
     {
         private readonly ICategoryService _categoryService;

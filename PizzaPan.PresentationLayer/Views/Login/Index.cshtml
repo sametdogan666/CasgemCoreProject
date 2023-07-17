@@ -1,5 +1,4 @@
-﻿@model RegisterViewModel
-
+﻿@model LoginViewModel
 @{
     Layout = null;
 }
@@ -27,33 +26,21 @@
             <div class="container">
                 <div class="signup-content">
                     <form method="post" id="signup-form" class="signup-form">
-                        <h2 class="form-title">Kayit Ol</h2>
-                        <div class="form-group">
-                            <input type="text" class="form-input" id="name" placeholder="Ad" asp-for="FirstName" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-input" id="name" placeholder="Soyad" asp-for="LastName" />
-                        </div>
+                        <h2 class="form-title">Giriş Yap</h2>
+                       
                         <div class="form-group">
                             <input type="text" class="form-input" id="name" placeholder="Kullanıcı Adı" asp-for="UserName" />
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-input" id="email" placeholder="Mail Adresi" asp-for="Email" />
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-input" id="password" placeholder="Şifre" asp-for="Password" />
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-input" id="re_password" placeholder="Şifre Tekrar" asp-for="ConfirmPassword" />
+                            <button name="submit" class="form-submit">Giriş Yap</button>
                         </div>
-                        <div class="form-group">
-                            <button name="submit" class="form-submit">Kayıt Ol</button>
-                        </div>
-                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                     </form>
                     <p class="loginhere">
-                        Zaten bir hesabın var mı ? <a href="/Login/Index/" class="loginhere-link">Giriş Yap</a>
+                        Henüz hesabın yok mu ? <a href="/Register/Index/" class="loginhere-link">Kayıt Ol</a>
                     </p>
                 </div>
             </div>
