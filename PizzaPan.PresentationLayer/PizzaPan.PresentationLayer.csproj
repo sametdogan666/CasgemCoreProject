@@ -42,4 +42,9 @@
     <ProjectReference Include="..\PizzaPan.BusinessLayer\PizzaPan.BusinessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewComponents\Default\" />
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
