@@ -57,5 +57,6 @@ namespace PizzaPan.PresentationLayer.Models
                 Description = "Parolalar en az bir sembol içermelidir."
             };
         }
+
     }
 }
