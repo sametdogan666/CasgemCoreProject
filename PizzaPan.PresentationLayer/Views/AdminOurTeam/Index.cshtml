@@ -1,0 +1,40 @@
+﻿@model List<OurTeam>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Personel Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Personel Adı</th>
+        <th>Personel Soyadı</th>
+        <th>Personel Başlığı</th>
+        <th>Personel Resim Yolu</th>
+        <th>Personel Facebook Adresi</th>
+        <th>Personel Twitter Adresi</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Title</td>
+            <td>@item.ImageUrl</td>
+            <td>@item.Facebook</td>
+            <td>@item.Twitter</td>
+            <td><a href="/AdminOurTeam/UpdateOurTeam/@item.Id" class="btn btn-outline-warning">Güncelle</a></td>
+            <td><a href="/AdminOurTeam/DeleteOurTeam/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+        </tr>
+    }
+</table>
+<a href="/AdminOurTeam/AddOurTeam/" class="btn btn-outline-primary">Yeni Personel Ekle</a>
+

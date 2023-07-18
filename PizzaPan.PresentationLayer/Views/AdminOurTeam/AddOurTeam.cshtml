@@ -1,0 +1,37 @@
+﻿@model OurTeam
+@{
+    ViewData["Title"] = "AddOurTeam";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Personel Ekleme Sayfası</h1>
+
+<form method="post">
+    <label>Adınız</label>
+    <input type="text" asp-for="FirstName" class="form-control border"/>
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+    <br/>
+    <label>Soyadınız</label>
+    <input type="text" asp-for="LastName" class="form-control border" />
+    <span asp-validation-for="LastName" class="text-danger"></span>
+    <br />
+    <label>Başlık</label>
+    <input type="text" asp-for="Title" class="form-control border" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+    <label>Resim Yolu</label>
+    <input type="text" asp-for="ImageUrl" class="form-control border" />
+    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    <br />
+    <label>Facebook Adresi</label>
+    <input type="text" asp-for="Facebook" class="form-control border" />
+    <span asp-validation-for="Facebook" class="text-danger"></span>
+    <br />
+    <label>Twitter Adresi</label>
+    <input type="text" asp-for="Twitter" class="form-control border" />
+    <span asp-validation-for="Twitter" class="text-danger"></span>
+    <br />
+    <button class="btn btn-warning">Personeli Ekle</button>
+    <a href="/AdminOurTeam/Index/" class="btn btn-secondary">Değişikliklerden Vazgeç</a>
+</form>
+
