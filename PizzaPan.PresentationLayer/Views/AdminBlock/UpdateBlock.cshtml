@@ -1,0 +1,37 @@
+﻿@model Block
+
+@{
+    ViewData["Title"] = "UpdateBlock";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Blok Güncelleme Sayfası</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <label>Başlık 1</label>
+    <input asp-for="Title1" class="form-control" />
+    <span asp-validation-for="Title1" class="text-danger"></span>
+    <br />
+    <label>Açıklama 1</label>
+    <input asp-for="Description1" class="form-control" />
+    <span asp-validation-for="Description1" class="text-danger"></span>
+    <br />
+    <label>Başlık 2</label>
+    <input asp-for="Title2" class="form-control" />
+    <span asp-validation-for="Title2" class="text-danger"></span>
+    <br />
+    <label>Açıklama 2</label>
+    <input asp-for="Description2" class="form-control" />
+    <span asp-validation-for="Description2" class="text-danger"></span>
+    <br />
+    <label>Resim</label>
+    <input asp-for="ImageUrl" class="form-control" />
+    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+    <a href="/AdminBlock/Index/" class="btn btn-warning">Değişikliklerden Vazgeç</a>
+</form>
+
+

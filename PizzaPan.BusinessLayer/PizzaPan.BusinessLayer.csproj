@@ -10,6 +10,7 @@
     <Folder Include="Messages\" />
     <Folder Include="ValidationRules\CompanyInfoValidator\" />
     <Folder Include="ValidationRules\AboutValidator\" />
+    <Folder Include="ValidationRules\BlockValidator\" />
     <Folder Include="ValidationRules\ProductValidator\" />
   </ItemGroup>
 

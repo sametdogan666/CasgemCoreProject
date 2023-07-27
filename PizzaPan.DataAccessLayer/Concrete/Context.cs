@@ -23,7 +23,7 @@ namespace PizzaPan.DataAccessLayer.Concrete
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<OurTeam> OurTeams { get; set; }
         public DbSet<About> Abouts { get; set; }
-
+        public DbSet<Block> Blocks { get; set; }
 
     }
 }

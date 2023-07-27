@@ -1,0 +1,42 @@
+﻿@model List<Block>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Blok Sayfası</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık 1</th>
+        <th>Açıklama 1</th>
+        <th>Başlık 2</th>
+        <th>Açıklama 2</th>
+        <th>Resim</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Title1</td>
+            <td>@item.Description1</td>
+            <td>@item.Title2</td>
+            <td>@item.Description2</td>
+            <td>@item.ImageUrl</td>
+            <td><a href="/AdminBlock/UpdateBlock/@item.Id" class="btn btn-outline-warning">Güncelle</a></td>
+            <td><a href="/AdminBlock/DeleteBlock/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+        </tr>
+    }
+</table>
+
+@if (ViewBag.countBlock == 0)
+{
+    <a href="/AdminBlock/AddBlock/" class="btn btn-outline-primary">Yeni Hakkımda Ekle</a>
+}
+
+

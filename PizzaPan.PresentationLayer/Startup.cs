@@ -64,6 +64,9 @@ namespace PizzaPan.PresentationLayer
             services.AddScoped<IAboutService, AboutManager>();
             services.AddScoped<IAboutDal, EfAboutDal>();
 
+            services.AddScoped<IBlockService, BlockManager>();
+            services.AddScoped<IBlockDal, EfBlockDal>();
+
 
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
 

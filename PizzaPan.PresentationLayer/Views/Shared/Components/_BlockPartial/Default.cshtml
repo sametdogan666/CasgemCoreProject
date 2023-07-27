@@ -1,24 +1,24 @@
-﻿<section class="w3l-block py-5">
+﻿@model Block
+
+<section class="w3l-block py-5">
     <div class="container py-lg-5 py-md-4">
         <div class="row">
             <div class="col-lg-4 col-md-6 align-self">
-                <h3>Choose what you want, select a pick up time</h3>
+                <h3>@Model.Title1</h3>
                 <p class="mt-md-4 mt-3 mb-0">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda perferendis in
-                    expedita hic sapiente! Aspernatur pariatur consequuntur suscipit placeat nemo!
+                    @Model.Description1
                 </p>
-                <a href="#url" class="btn-style btn-primary btn mt-lg-5 mt-4"><span class="fa fa-shopping-cart mr-2"></span> Order Online</a>
+                <a href="#url" class="btn-style btn-primary btn mt-lg-5 mt-4"><span class="fa fa-shopping-cart mr-2"></span> Online Sipariş</a>
             </div>
             <div class="col-lg-4 col-md-6 align-self mt-md-0 mt-5">
-                <h3>Earn points every time you order online</h3>
+                <h3>@Model.Title2</h3>
                 <p class="mt-md-4 mt-3 mb-0">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore reiciendis saepe
-                    enim odio laboriosam nostrum illo nesciunt repellat totam. Molestias.
+                    @Model.Description2
                 </p>
-                <a href="#url" class="btn-style btn-primary btn mt-lg-5 mt-4"><span class="fa fa-book mr-2"></span> Learn More</a>
+                <a href="#url" class="btn-style btn-primary btn mt-lg-5 mt-4"><span class="fa fa-book mr-2"></span> Bizimle İletişime Geç</a>
             </div>
             <div class="col-lg-4 mt-lg-0 mt-5">
-                <img src="~/pizzapan-starter_Free30-03-2020_1048502575/pizzapan-starter/assets/images/a1.jpg" class="img-fluid radius-image" alt="image">
+                <img src="@Model.ImageUrl" class="img-fluid radius-image" alt="image">
             </div>
         </div>
     </div>
