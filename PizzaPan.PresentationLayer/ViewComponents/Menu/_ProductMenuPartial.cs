@@ -21,7 +21,7 @@ namespace PizzaPan.PresentationLayer.ViewComponents.Menu
 
         public IViewComponentResult Invoke()
         {
-            //BadCode
+            //BadCodess
             //var viewModel = new CategoryProductViewModel
             //{
             //    Categories = _categoryService.TGetList(),
