@@ -8,5 +8,6 @@ namespace PizzaPan.DataAccessLayer.Abstract
         public List<Product> GetProductsWithCategory();
         public List<Product> GetAllPizza();
         public Product GetCheapestPizza();
+        List<IEnumerable<Product>> ProductsPerCategory();
     }
 }

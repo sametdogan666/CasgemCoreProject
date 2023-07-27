@@ -9,5 +9,7 @@ namespace PizzaPan.BusinessLayer.Abstract
         List<Product> GetAllPizza();
 
         Product GetCheapestPizza();
+
+        List<IEnumerable<Product>> ProductsPerCategory();
     }
 }

@@ -53,5 +53,10 @@ namespace PizzaPan.BusinessLayer.Concrete
         {
             return _productDal.GetCheapestPizza();
         }
+
+        public List<IEnumerable<Product>> ProductsPerCategory()
+        {
+            return _productDal.ProductsPerCategory();
+        }
     }
 }

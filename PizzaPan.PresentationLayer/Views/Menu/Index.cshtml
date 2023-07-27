@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="en">
+
+@await Component.InvokeAsync("_HeadPartial","Default")
+
+<body>
+    <!--header-->
+    @await Component.InvokeAsync("_NavbarPartial", "Default")
+    <!--/header-->
+    <!-- Domain Modal -->
+    @await Component.InvokeAsync("_DomainModalPartial","Default")
+    <!-- //Domain modal -->
+    <section class="w3l-breadcrumb">
+        <div class="container">
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="/Default/Index/">Ana Sayfa</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Menu</li>
+            </ul>
+        </div>
+    </section>
+    <!-- menu -->
+    @await Component.InvokeAsync("_ProductMenuPartial")
+    <!-- //menu -->
+    <!-- footers 20 -->
+    @await Component.InvokeAsync("_FooterPartial","Default")
+    <!-- move top -->
+    @await Component.InvokeAsync("_ScriptPartial","Default")
+
+</body>
+
+</html>

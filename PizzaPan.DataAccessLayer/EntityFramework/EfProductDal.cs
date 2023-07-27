@@ -31,5 +31,12 @@ namespace PizzaPan.DataAccessLayer.EntityFramework
 
             return context.Products.Where(p=>p.Category.CategoryName == "Pizza").OrderBy(p=>p.ProductPrice).FirstOrDefault();
         }
+
+        public List<IEnumerable<Product>> ProductsPerCategory()
+        {
+            using var context = new Context();
+
+            return context.Categories.Select(c => c.Products.Take(4)).ToList();
+        }
     }
 }

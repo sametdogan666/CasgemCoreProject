@@ -2,7 +2,7 @@
 
 namespace PizzaPan.PresentationLayer.ViewComponents.Default
 {
-    public class _DomainModalPartial:ViewComponent
+    public class _DomainModalPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

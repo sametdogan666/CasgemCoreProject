@@ -43,8 +43,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewModels\" />
     <Folder Include="ViewComponents\Default\" />
+    <Folder Include="ViewComponents\Menu\" />
     <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\Components\_ProductMenuPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_ProductMenuPartial\Default.cshtml" />
   </ItemGroup>
 
 </Project>
