@@ -1,4 +1,5 @@
-﻿@model PizzaPan.PresentationLayer.ViewModels.CategoryProductViewModel
+﻿@*@model PizzaPan.PresentationLayer.ViewModels.CategoryProductViewModel*@
+@model List<PizzaPan.EntityLayer.Concrete.Category>
 
 <div class="agileits-services  py-5" id="menu">
     <div class="container py-md-5">
@@ -9,17 +10,13 @@
             </div>
             <div class="pt-lg-5 pt-4">
                 <div class="row menu-body">
-                    @foreach (var category in Model.Categories)
+                    @foreach (var category in Model)
                     {
                         <div class="col-lg-6 menu-section pr-lg-5">
                             <h3 class="menu-section-title">@category.CategoryName</h3>
                             <ul>
-                                @foreach (var productList in Model.ProductsPerCategory)
-                                {
-
-                                    var productsForCategory = productList.Where(p => p.CategoryId == category.CategoryId);
-
-                                    foreach (var product in productsForCategory)
+                             
+                                    @foreach (var product in category.Products)
                                     {
                                         <div class="menu-item">
                                             <div class="row border-dot no-gutters">
@@ -35,7 +32,7 @@
                                             </div>
                                         </div>
                                     }
-                                }
+                                
                             </ul>
                         </div>
                     }
