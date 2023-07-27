@@ -11,6 +11,7 @@
     <input type="hidden" asp-for="CategoryId"/>
     
     <input type="text" class="form-control" asp-for="CategoryName"/>
+    <span asp-validation-for="CategoryName" class="text-danger"></span>
     <br/>
     <button class="btn btn-primary">Güncelle</button>
     <a href="/AdminCategory/Index/" class="btn btn-warning">Değişikliklerden Vazgeç</a>

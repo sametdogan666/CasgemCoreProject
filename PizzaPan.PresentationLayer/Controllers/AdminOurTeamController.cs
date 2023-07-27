@@ -32,8 +32,8 @@ namespace PizzaPan.PresentationLayer.Controllers
         [HttpPost]
         public IActionResult AddOurTeam(OurTeam ourTeam)
         {
-            CreateOurTeamValidator createOurTeamValidator = new CreateOurTeamValidator();
-            ValidationResult result = createOurTeamValidator.Validate(ourTeam);
+            OurTeamValidator ourTeamValidator = new OurTeamValidator();
+            ValidationResult result = ourTeamValidator.Validate(ourTeam);
             if (result.IsValid)
             {
                 _teamService.TInsert(ourTeam);
@@ -70,9 +70,23 @@ namespace PizzaPan.PresentationLayer.Controllers
         [HttpPost]
         public IActionResult UpdateOurTeam(OurTeam ourTeam)
         {
-            _teamService.TUpdate(ourTeam);
+            OurTeamValidator ourTeamValidator = new OurTeamValidator();
+            ValidationResult result = ourTeamValidator.Validate(ourTeam);
+            if (result.IsValid)
+            {
+                _teamService.TUpdate(ourTeam);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
 
-            return RedirectToAction("Index");
+                return View();
+            }
+
         }
 
     }

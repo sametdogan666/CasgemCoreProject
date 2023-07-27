@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PizzaPan.BusinessLayer.Abstract;
+using PizzaPan.BusinessLayer.ValidationRules.CategoryValidator;
+using PizzaPan.BusinessLayer.ValidationRules.OurTeamValidator;
 using PizzaPan.EntityLayer.Concrete;
 
 namespace PizzaPan.PresentationLayer.Controllers
@@ -31,9 +34,24 @@ namespace PizzaPan.PresentationLayer.Controllers
         [HttpPost]
         public IActionResult AddCategory(Category category)
         {
-            _categoryService.TInsert(category);
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult result = categoryValidator.Validate(category);
 
-            return RedirectToAction("Index");
+            if (result.IsValid)
+            {
+                _categoryService.TInsert(category);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+
+                return View();
+            }
+
         }
 
         [HttpGet]
@@ -56,9 +74,23 @@ namespace PizzaPan.PresentationLayer.Controllers
         [HttpPost]
         public IActionResult UpdateCategory(Category category)
         {
-            _categoryService.TUpdate(category);
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult result = categoryValidator.Validate(category);
 
-            return RedirectToAction("Index");
+            if (result.IsValid)
+            {
+                _categoryService.TUpdate(category);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+
+                return View();
+            }
         }
     }
 }

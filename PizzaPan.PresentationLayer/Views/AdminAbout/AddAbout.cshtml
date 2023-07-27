@@ -1,0 +1,57 @@
+﻿@model About
+@{
+    ViewData["Title"] = "AddAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Kategori Ekleme Sayfası</h2>
+
+<form method="post">
+    <label>Başlık</label>
+    <input asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+    <label>Alt Başlık</label>
+    <input asp-for="SubTitle" class="form-control" />
+    <span asp-validation-for="SubTitle" class="text-danger"></span>
+    <br />
+    <label>Açıklama</label>
+    <input asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+    <br />
+    <label>Alan 1 Açıklama</label>
+    <input asp-for="Field1Text" class="form-control" />
+    <span asp-validation-for="Field1Text" class="text-danger"></span>
+    <br />
+    <label>Alan 1 Resim</label>
+    <input asp-for="Field1ImageUrl" class="form-control" />
+    <span asp-validation-for="Field1ImageUrl" class="text-danger"></span>
+    <br />
+    <label>Alan 2 Açıklama</label>
+    <input asp-for="Field2Text" class="form-control" />
+    <span asp-validation-for="Field2Text" class="text-danger"></span>
+    <br />
+    <label>Alan 2 Resim</label>
+    <input asp-for="Field2ImageUrl" class="form-control" />
+    <span asp-validation-for="Field2ImageUrl" class="text-danger"></span>
+    <br />
+    <label>Alan 3 Açıklama</label>
+    <input asp-for="Field3Text" class="form-control" />
+    <span asp-validation-for="Field3Text" class="text-danger"></span>
+    <br />
+    <label>Alan 3 Resim</label>
+    <input asp-for="Field3ImageUrl" class="form-control" />
+    <span asp-validation-for="Field3ImageUrl" class="text-danger"></span>
+    <br />
+    <label>Alan 4 Açıklama</label>
+    <input asp-for="Field4Text" class="form-control" />
+    <span asp-validation-for="Field4Text" class="text-danger"></span>
+    <br />
+    <label>Alan 4 Resim</label>
+    <input asp-for="Field4ImageUrl" class="form-control" />
+    <span asp-validation-for="Field4ImageUrl" class="text-danger"></span>
+    <br />
+    <button class="btn btn-info">Hakkımda Kaydet</button>
+    <a href="/AdminAbout/Index/" class="btn btn-secondary">Değişikliklerden Vazgeç</a>
+</form>
+

@@ -1,7 +1,10 @@
 ﻿using System.Linq;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PizzaPan.BusinessLayer.Abstract;
+using PizzaPan.BusinessLayer.ValidationRules.CategoryValidator;
+using PizzaPan.BusinessLayer.ValidationRules.ProductValidator;
 using PizzaPan.DataAccessLayer.Concrete;
 using PizzaPan.EntityLayer.Concrete;
 
@@ -43,9 +46,23 @@ namespace PizzaPan.PresentationLayer.Controllers
         [HttpPost]
         public IActionResult AddProduct(Product product)
         {
-            _productService.TInsert(product);
+            ProductValidator productValidator = new ProductValidator();
+            ValidationResult result = productValidator.Validate(product);
 
-            return RedirectToAction("Index");
+            if (result.IsValid)
+            {
+                _productService.TInsert(product);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+
+                return View();
+            }
         }
 
 
@@ -78,9 +95,23 @@ namespace PizzaPan.PresentationLayer.Controllers
         [HttpPost]
         public IActionResult UpdateProduct(Product product)
         {
-            _productService.TUpdate(product);
+            ProductValidator productValidator = new ProductValidator();
+            ValidationResult result = productValidator.Validate(product);
 
-            return RedirectToAction("Index");
+            if (result.IsValid)
+            {
+                _productService.TUpdate(product);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+
+                return View();
+            }
         }
     }
 }

@@ -10,18 +10,23 @@
 <form method="post">
     <label>Ürün Adı</label>
     <input asp-for="ProductName" class="form-control" />
+    <span asp-validation-for="ProductName" class="text-danger"></span>
     <br />
     <label>Ürün Açıklaması</label>
     <input asp-for="ProductDescription" class="form-control" />
+    <span asp-validation-for="ProductDescription" class="text-danger"></span>
     <br />
     <label>Ürün Resim Yolu</label>
     <input asp-for="ProductImageUrl" class="form-control" />
+    <span asp-validation-for="ProductImageUrl" class="text-danger"></span>
     <br />
     <label>Ürün Fiyatı</label>
     <input asp-for="ProductPrice" class="form-control" />
+    <span asp-validation-for="ProductPrice" class="text-danger"></span>
     <br />
     <label>Ürün Kategorisi</label>
     @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryName,  new { @class = "form-control" })
+    <span asp-validation-for="CategoryId" class="text-danger"></span>
     <br />
     <button class="btn btn-info">Ürünü Kaydet</button>
     <a href="/AdminProduct/Index/" class="btn btn-secondary">Değişikliklerden Vazgeç</a>

@@ -1,4 +1,6 @@
-﻿<section class="w3l-banner" id="banner">
+﻿@model Product
+
+<section class="w3l-banner" id="banner">
     <div class="new-block py-5">
         <div class="container">
             <div class="row middle-section">
@@ -10,10 +12,10 @@
                     </a>
                 </div>
                 <div class="col-lg-5 history-info mt-lg-0 mt-5 pt-lg-0 pt-md-4">
-                    <img src="~/pizzapan-starter_Free30-03-2020_1048502575/pizzapan-starter/assets/images/pizza-full.png" class="img-fluid" alt="image">
+                    <img src="@Model.ProductImageUrl" class="img-fluid" alt="image">
                     <div class="cost">
                         <h5>Sadece</h5>
-                        <h3>50₺</h3>
+                        <h4 style="color:red">@Model.ProductPrice₺</h4>
                     </div>
                 </div>
             </div>

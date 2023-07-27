@@ -3,9 +3,9 @@ using PizzaPan.EntityLayer.Concrete;
 
 namespace PizzaPan.BusinessLayer.ValidationRules.OurTeamValidator
 {
-    public class CreateOurTeamValidator : AbstractValidator<OurTeam>
+    public class OurTeamValidator : AbstractValidator<OurTeam>
     {
-        public CreateOurTeamValidator()
+        public OurTeamValidator()
         {
             RuleFor(x => x.FirstName).NotEmpty().WithMessage("İsim alanı boş geçilemez");
             RuleFor(x => x.FirstName).MinimumLength(3).WithMessage("İsim alanı en az 3 karakterden oluşmalıdır");

@@ -1,12 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using PizzaPan.BusinessLayer.Abstract;
 
 namespace PizzaPan.PresentationLayer.ViewComponents.Default
 {
-    public class _AboutPartial:ViewComponent
+    public class _AboutPartial : ViewComponent
     {
+        private readonly IAboutService _aboutService;
+
+        public _AboutPartial(IAboutService aboutService)
+        {
+            _aboutService = aboutService;
+        }
+
         public IViewComponentResult Invoke()
         {
-            return View();
+            var value = _aboutService.TGetList().FirstOrDefault();
+
+            return View(value);
         }
     }
 }

@@ -8,7 +8,9 @@
     <Folder Include="Logging\" />
     <Folder Include="Extensions\" />
     <Folder Include="Messages\" />
-    <Folder Include="ValidationRules\OurTeamValidator\" />
+    <Folder Include="ValidationRules\CompanyInfoValidator\" />
+    <Folder Include="ValidationRules\AboutValidator\" />
+    <Folder Include="ValidationRules\ProductValidator\" />
   </ItemGroup>
 
   <ItemGroup>

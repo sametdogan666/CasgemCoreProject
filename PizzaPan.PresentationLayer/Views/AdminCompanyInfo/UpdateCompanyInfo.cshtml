@@ -11,18 +11,25 @@
     <input type="hidden" asp-for="Id" />
 
     <input type="text" class="form-control" asp-for="Title" />
+    <span asp-validation-for="Title" class="text-danger"></span>
     <br />
     <input type="text" class="form-control" asp-for="PhoneNumber" />
+    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     <br />
     <input type="text" class="form-control" asp-for="Mail" />
+    <span asp-validation-for="Mail" class="text-danger"></span>
     <br />
     <input type="text" class="form-control" asp-for="Address" />
+    <span asp-validation-for="Address" class="text-danger"></span>
     <br />
     <input type="text" class="form-control" asp-for="Location" />
+    <span asp-validation-for="Location" class="text-danger"></span>
     <br />
     <input type="text" class="form-control" asp-for="OpeningDay" />
+    <span asp-validation-for="OpeningDay" class="text-danger"></span>
     <br />
     <input type="text" class="form-control" asp-for="OpeningTime" />
+    <span asp-validation-for="OpeningTime" class="text-danger"></span>
     <br />
     <button class="btn btn-primary">Güncelle</button>
     <a href="/AdminCompanyInfo/Index/" class="btn btn-warning">Değişikliklerden Vazgeç</a>

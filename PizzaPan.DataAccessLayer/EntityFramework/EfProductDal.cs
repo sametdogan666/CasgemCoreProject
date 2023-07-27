@@ -17,5 +17,19 @@ namespace PizzaPan.DataAccessLayer.EntityFramework
 
             return context.Products.Include(x => x.Category).ToList();
         }
+
+        public List<Product> GetAllPizza()
+        {
+            using var context = new Context();
+
+            return context.Products.Where(p => p.Category.CategoryName == "Pizza").ToList();
+        }
+
+        public Product GetCheapestPizza()
+        {
+            using var context = new Context();
+
+            return context.Products.Where(p=>p.Category.CategoryName == "Pizza").OrderBy(p=>p.ProductPrice).FirstOrDefault();
+        }
     }
 }
