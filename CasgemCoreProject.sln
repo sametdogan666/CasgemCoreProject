@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaPan.DataAccessLayer", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaPan.BusinessLayer", "PizzaPan.BusinessLayer\PizzaPan.BusinessLayer.csproj", "{704BE429-BDA1-4F6E-9AA5-D4F9CD9363DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaPan.PresentationLayer", "PizzaPan.PresentationLayer\PizzaPan.PresentationLayer.csproj", "{3E4C0A74-7464-4BBA-8BC8-8A31E49C3BAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaPan.PresentationLayer", "PizzaPan.PresentationLayer\PizzaPan.PresentationLayer.csproj", "{3E4C0A74-7464-4BBA-8BC8-8A31E49C3BAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{75C13DE1-480F-48BE-BEFB-FD280EED97D9}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
